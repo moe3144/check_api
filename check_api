@@ -1,0 +1,15 @@
+#!/bin/bash
+result=$(curl -Is $1 | grep -F HTTP | cut -d ' ' -f 2)
+if [[ $result == 200 ]]; then
+echo "Connection Ok"
+elif [[ $result == 401 ]]; then
+echo "Unauthorized"
+elif [[ $result == 404 ]]; then
+echo "Not Found"
+elif [[ $result == 301 ]]; then
+echo "Moved Permanently"
+else
+echo "Wrong hostname"
+fi
+
+
